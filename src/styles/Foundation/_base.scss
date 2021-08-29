@@ -1,0 +1,35 @@
+html {
+  font-size: 62.5%;
+  font-family: "Helvetica",
+  "Arial",
+  "Hiragino Kaku Gothic ProN",
+  "Hiragino Sans",
+  "Source Han Sans",
+  "Meiryo",
+  sans-serif;
+  letter-spacing: .2em;
+  &:focus-within {
+    scroll-behavior: auto;
+  }
+}
+body {
+  font-size: fz(m);
+  font-feature-settings: "palt";
+  line-height: 2;
+  color: color(black);
+}
+
+a {
+  color: color(main);
+  text-decoration: none;
+}
+
+svg {
+  height: auto;
+  max-height: 100%;
+}
+
+::selection {
+  color: color(black);
+  background-color: color(mainLight);
+}

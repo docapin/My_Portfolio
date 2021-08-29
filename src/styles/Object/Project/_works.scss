@@ -1,0 +1,158 @@
+//トップページの制作実績
+/* works */
+.p-works {
+  @include layoutBase;
+  &__title {
+    @include titleBase($color: color(main), $lineColor: color(white));
+    &::selection, &-sub::selection {
+      color: color(black);
+      background-color: color(white);
+    }
+  }
+  &__sec {
+    margin-top: space(4xl);
+  }
+  &__head { //カテゴリ見出し
+    line-height: 1;
+    &-main {
+      position: relative;
+      display: inline-block;
+      padding: space(s) space(s) space(s) calc((#{space(s)} * 2) + #{space(m)} + 1em);
+      color: color(main);
+      background-color: color(white);
+      font-size: fz(l);
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(#{fz(l)} + #{space(s)} + #{fz(xs)});
+        height: 100%;
+        background: no-repeat color(main) center /cover;
+        content: '';
+      }
+      &--design::after {
+        background-image: url(/skills_icon_design.svg);
+      }
+      &--website::after {
+        background-image: url(/skills_icon_website.svg);
+      }
+      &--others::after {
+        background-image: url(/skills_icon_others.svg);
+      }
+    }
+    &-sub {
+      display: inline-block;
+      margin-left: space(s);
+      color: color(black);
+      font-size: fz(xs);
+      vertical-align: bottom;
+      transform: translateY(-.25em);
+    }
+  }
+  &__info { //カテゴリ情報
+    margin-top: space(s);
+    padding: space(l);
+    background-color: color(white);
+    &-text {
+      p {
+        @include mq(sp) {
+          &:first-child, &:last-child {
+            padding: 0;
+          }
+          &:not(:first-child) {
+            margin-top: space(l);
+          }
+        }
+      }
+    }
+    @include mq(sp) {
+      padding: space(m);
+    }
+  }
+  &__slide { //スライダー
+    &-list {
+      margin-left: #{space(l)};
+      width: calc((100% - #{space(l)} - .2rem) / 2);
+      transform: translateX(calc((#{space(l)} - .1rem) * -1));
+      cursor: pointer;
+      @include mq(tab){
+        margin-left: 0;
+        width: 100%;
+        transform: none;
+      }
+      &:hover { //ホバー時の処理
+        .p-works__slide-thumbnail {
+          &::before {
+            background-color: rgba(color(main), .5);
+          }
+          &::after {
+            color: color(white);
+            background-color: color(main);
+            border-color: color(white);
+          }
+          // &-image {
+          //   transform: scale(1.2);
+          // }
+        }
+        .p-works__slide-title {
+          opacity: .5;
+          @include underLineAfter($hover: false);
+        }
+      }
+      &-link {
+        display: block;
+        height: 100%;
+        text-decoration: none;
+      }
+    }
+    &-thumbnail, &-title {
+      transition: $trs;
+    }
+    &-thumbnail { //サムネイル
+      position: relative;
+      background-color: color(lgray);
+      text-align: center;
+      border: 1px solid color(main);
+      backface-visibility: hidden;
+      overflow: hidden;
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: $trs;
+        z-index: 1;
+        content: '';
+      }
+      &::after {
+        position: absolute;
+        bottom: space(s);
+        right: space(s);
+        padding: space(xs) space(s);
+        color: color(main);
+        background-color: rgba(color(white), 1);
+        line-height: 1;
+        font-size: fz(s);
+        font-weight: bold;
+        border: .2rem solid color(main);
+        border-radius: 999rem;
+        transition: $trs;
+        content: 'more';
+        z-index: 2;
+      }
+      img {
+        width: 100%;
+      }
+      // &-image {
+      //   width: 100%;
+      //   transition: $trs;
+      // }
+    }
+    &-title { //リンク先タイトル
+      // position: relative;
+      display: inline;
+      @include underLineBefore($lineColor: color(main));
+    }
+  }
+}

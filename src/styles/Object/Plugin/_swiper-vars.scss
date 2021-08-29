@@ -1,0 +1,7 @@
+@import '../../Foundation/_variable';
+@import '../../Foundation/_mixin';
+$themeColor: color(main) !default;
+$colors: (
+  'white': #ffffff,
+  'black': #000000,
+) !default;

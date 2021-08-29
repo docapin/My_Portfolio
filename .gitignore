@@ -1,0 +1,15 @@
+node_modules/
+
+# gatsby files
+.cache/
+public
+
+# dotenv environment variable files
+.env*
+
+# disabled files
+disabled_files
+
+# firebase
+.firebase*
+firebase.json

@@ -1,0 +1,12 @@
+/* underline */
+.c-underline { //テキストのアンダーライン
+  @include underLineBefore($lineColor: color(main));
+  &:hover {
+    @include underLineAfter;
+  }
+  &.is-opacity {
+    &:hover {
+      opacity: .5;
+    }
+  }
+}

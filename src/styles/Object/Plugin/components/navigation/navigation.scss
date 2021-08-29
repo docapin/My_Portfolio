@@ -1,0 +1,70 @@
+@import '../../swiper-vars.scss';
+
+$swiperBd: .25em solid color(white);
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  bottom: 0;
+  width: space(2xl);
+  height: space(2xl);
+  z-index: 10;
+  cursor: pointer;
+  color: color(main);
+  background-color: color(main);
+  transition: background-color $trs;
+  &.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: auto;
+    pointer-events: none;
+  }
+  &:hover {
+    background-color: scale-color(color(main), $lightness: 50%);
+  }
+  &::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 1em;
+    height: 1em;
+    border-top: $swiperBd;
+    content: '';
+  }
+  @include mq(sp){
+    width: space(l);
+  }
+}
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  &:after {
+    left: 50%;
+    border-left: $swiperBd;
+    transform: translate(-30%, -0.5em) rotate(-45deg);
+  }
+  left: 0;
+  right: auto;
+}
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+  &::before {
+    right: 0;
+  }
+  &::after {
+    right: 50%;
+    border-right: $swiperBd;
+    transform: translate(30%, -0.5em) rotate(45deg);
+  }
+  right: 0;
+  left: auto;
+}
+
+@each $navColorName, $navColorValue in $colors {
+  .swiper-button-prev,
+  .swiper-button-next {
+    &.swiper-button-#{$navColorName} {
+      --swiper-navigation-color: #{$navColorValue};
+    }
+  }
+}
+.swiper-button-lock {
+  display: none;
+}

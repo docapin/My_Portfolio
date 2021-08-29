@@ -1,0 +1,9 @@
+/* spacing */
+@each $key in $spaceSet {
+  .u-margin-top--#{nth($key, 1)} {
+    margin-top: nth($key, 2);
+  }
+  .u-margin-left--#{nth($key, 1)} {
+    margin-left: nth($key, 2);
+  }
+}

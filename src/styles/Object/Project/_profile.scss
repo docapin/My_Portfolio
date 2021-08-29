@@ -1,0 +1,73 @@
+/* profile */
+.p-profile {
+  @include layoutBase($catName: 'Profile');
+  &__title {
+    @include titleBase(color(main));
+  }
+  &__info { //名前と自己紹介
+    margin-top: space(4xl);
+    &-text {
+      @include mq(tab){
+        margin-top: space(l);
+        order: 1;
+      }
+    }
+    &-name {
+      font-size: fz(l);
+      line-height: 1;
+    }
+    &-about {
+      margin-top: space(m);
+    }
+    &-img {
+      text-align: center;
+      &:not(:first-child) {
+        margin-top: 0;
+      }
+      img {
+        width: 100%;
+        @include mq(tab){
+          max-width: 30rem;
+        }
+      }
+    }
+  }
+  &__skills { //使用ツール・スキル
+    margin-top: space(4xl);
+    &-title {
+      color: color(main);
+      font-size: fz(xl);
+      font-weight: bold;
+      line-height: 1;
+      letter-spacing: .04em;
+      &-sub {
+        position: relative;
+        display: inline-block;
+        padding-left: space(s);
+        color: color(black);
+        font-size: fz(m);
+        font-weight: normal;
+        vertical-align: middle;
+      }
+    }
+    &-list { //スキルのリスト
+      li {
+        display: inline-block;
+        margin: space(s) space(s) 0 0;
+        padding: 0 space(s);
+        font-size: fz(xs);
+        border-radius: 999rem;
+        &::selection {
+          color: color(black);
+          background-color: color(white);
+        }
+      }
+      &-normal {
+        background-color: color(grayLight);
+      }
+      &-feature {
+        background-color: color(gold);
+      }
+    }
+  }
+}

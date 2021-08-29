@@ -1,0 +1,14 @@
+/* 404 */
+.p-not-found {
+  @include layoutBase;
+  height: calc(100vh - (#{space(m)} * 2 + 1em));
+  &__title {
+    @include titleBase($color: color(main));
+  }
+  @include mq(main){
+    height: calc(100vh - (#{space(m)} * 2 + 1em) - (#{$tabHeaderSize}));
+  }
+  @include mq(sp){
+    height: calc(100vh - (#{space(m)} * 2 + 1em) - (#{$spHeaderSize}));
+  }
+}

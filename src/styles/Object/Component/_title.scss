@@ -1,0 +1,14 @@
+/* title */
+.c-title { //タイトルロゴ
+  &__name {
+    rect {
+      fill: none;
+    }
+    path {
+      fill: color(white);
+      stroke: color(white);
+      stroke-width: .2rem;
+      transform: translate(0, 0);
+    }
+  }
+}

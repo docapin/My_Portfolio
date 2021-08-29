@@ -1,0 +1,32 @@
+//グリッドシステム
+$gridTotal: 12; //カラム分割数
+$gridMargin: space(3xl); //カラム同士の余白
+.c-row {
+  @include flexSet($jc: space-between);
+}
+.c-column {
+  @for $i from 1 through $gridTotal {
+    $gridWidth: floor(((100 / $gridTotal) * $i) * 1%);
+    &__#{$i}, &__#{$i}--tab, &__#{$i}--sp {
+      flex: 0 0 #{$gridWidth};
+      width: 100%;
+      @if $i == $gridTotal {
+        max-width: 100%;
+      } @else {
+        max-width: calc(#{$gridWidth} - (#{$gridMargin} / 2));
+      }
+    }
+  }
+}
+
+@include mq(tab){
+  [class*="--tab"] {
+    @include gridReset(space(l));
+  }
+}
+
+@include mq(sp){
+  [class*="--sp"] {
+    @include gridReset(space(l));
+  }
+}

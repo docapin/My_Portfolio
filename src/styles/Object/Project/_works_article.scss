@@ -1,0 +1,179 @@
+//制作実績の個別記事用
+/* works_art */
+.p-works-art {
+  @include layoutBase();
+  &__cat-title { //見出し
+    @include titleBase(color(main), color(white));
+    &::selection, &-sub::selection {
+      color: color(black);
+      background-color: color(white);
+    }
+  }
+  &__main { //作品紹介エリア
+    margin-top: space(4xl);
+    padding: space(l);
+    background-color: color(white);
+    &-title {
+      position: relative;
+      margin: -.5em auto 0;
+      text-align: center;
+      font-size: fz(l);
+      &-br::after { //sp時の改行設定
+        content: '\A';
+        white-space: pre;
+      }
+      @include mq(sp){
+        font-size: fz(m);
+        text-align: left;
+        &-br::after {
+          display: inline-block;
+          width: 1em;
+          content: '';
+          white-space: normal;
+        }
+      }
+    }
+    @include mq(sp){
+      padding: space(m);
+    }
+  }
+  &__slide { //スライダー
+    &.swiper-container {
+      margin-top: calc(#{space(l)} - .5em);
+      @include mq(sp){
+        margin-top: calc(#{space(m)} - .5em);
+      }
+    }
+    &-list {
+      width: 100%;
+    }
+    &-image {
+      @include flexSet($jc:center, $ai: center);
+      padding: space(m);
+      width: 100%;
+      height: 100%;
+      background-color: color(grayLight);
+      text-align: center;
+      @include mq(sp){
+        padding: space(xs);
+      }
+    }
+  }
+  &__data { //作品データ
+    @include flexSet($jc: space-between, $ai: flex-start);
+    margin-top: space(l);
+    padding: space(m);
+    background-color: color(grayLight);
+    font-size: fz(s);
+    dt {
+      width: 25%;
+      padding: 0 space(s);
+      color: color(main);
+      background-color: color(white);
+      text-align: center;
+      border: .1rem solid color(main);
+      &:not(:first-of-type) {
+        margin-top: space(m);
+      }
+      @include mq(sp) {
+        width: 100%;
+        max-width: 100%;
+        text-align: left;
+      }
+    }
+    dd {
+      flex-grow: 1;
+      margin-left: space(s);
+      width: calc(75% - #{space(s)});
+      &:not(:first-of-type) {
+        margin-top: space(m);
+      }
+      &::selection {
+        background-color: color(white);
+      }
+      @include mq(sp) {
+        margin-left: 0;
+        padding: 0 space(s);
+        width: 100%;
+        &:not(:first-of-type) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+  &__pagination { //works_article内ページネーション
+    margin-top: space(l);
+    @include mq(sp){
+      margin-top: 0;
+    }
+    &-link { //次の作品用リンクボタン
+      @include mq(sp){
+        &:first-child {
+          margin-top: space(m);
+          order: 2;
+        }
+        &.is-disabled {
+          margin-top: 0;
+        }
+      }
+      a {
+        position: relative;
+        @include flexSet($ai: center);
+        width: 100%;
+        height: 100%;
+        padding: space(s) space(m);
+        color: color(white);
+        background-color: color(main);
+        text-decoration: none;
+        flex-grow: 2;
+        transition: background-color $trs;
+        &:hover {
+          background-color: color(mainHoverLight);
+        }
+        &::after {
+          position: absolute;
+          top: 50%;
+          width: 1em;
+          height: 1em;
+          border-top: .4rem solid color(white);
+          content: '';
+        }
+      }
+      &:first-child a { //前に戻るボタン
+        padding-left: space(3xl);
+        &::after {
+          left: space(m);
+          border-left: .4rem solid color(white);
+          transform: translateY(-50%) rotate(-45deg);
+        }
+      }
+      &:nth-child(2) a { //次に進むボタン
+        padding-right: space(2xl);
+        &::after {
+          right: space(m);
+          border-right: .4rem solid color(white);
+          transform: translateY(-50%) rotate(45deg);
+        }
+      }
+      &-back { //「worksに戻る」ボタン
+        margin-top: space(m);
+        background-color: color(white);
+        a {
+          display: block;
+          padding: space(s);
+          text-align: center;
+          text-decoration: none;
+          transition: opacity $trs;
+        }
+        &:hover {
+          a {
+            opacity: .5;
+          }
+        }
+        @include mq(sp){
+          order: 3;
+        }
+      }
+    }
+  }
+}

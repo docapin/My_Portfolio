@@ -1,0 +1,13 @@
+/* footer */
+.p-footer {
+  &__title {
+    @include titleBase(color(main));
+  }
+  &__copyright {
+    padding: space(m);
+    color: color(white);
+    background-color: color(mainDark);
+    line-height: 1;
+    text-align: center;
+  }
+}

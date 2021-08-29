@@ -1,0 +1,72 @@
+//変数設定
+$adjustSpace: .535vw; //iPhone6-8やiPhoneXにおける横幅の論理解像度375px時に、2pxになる数値
+$spaceSet: ( //余白
+  2xs: $adjustSpace,
+  xs: calc(.2rem + #{$adjustSpace}),
+  s: calc(.6rem + #{$adjustSpace}),
+  m: calc(1.4rem + #{$adjustSpace}),
+  l: calc(2.2rem + #{$adjustSpace}),
+  xl: calc(3rem + #{$adjustSpace}),
+  2xl: calc(3.8rem + #{$adjustSpace}),
+  3xl: calc(4.6rem + #{$adjustSpace}),
+  4xl: calc(5.4rem + #{$adjustSpace}),
+  5xl: calc(6.2rem + #{$adjustSpace}),
+  6xl: calc(7rem + #{$adjustSpace}),
+  7xl: calc(7.8rem + #{$adjustSpace})
+);
+@function space($key){
+  @return map-get($spaceSet, $key);
+}
+
+$fontSizeSet: ( //フォントサイズ
+  xs: calc(1rem + #{$adjustSpace}),
+  s: calc(1.2rem + #{$adjustSpace}),
+  m: calc(1.4rem + #{$adjustSpace}),
+  l: calc(2.2rem + #{$adjustSpace}),
+  xl: calc(3rem + #{$adjustSpace}),
+  2xl: calc(3.8rem + #{$adjustSpace}),
+  3xl: calc(4.6rem + #{$adjustSpace}),
+  4xl: calc(5.4rem + #{$adjustSpace}),
+  5xl: calc(6.2rem + #{$adjustSpace}),
+  6xl: calc(7rem + #{$adjustSpace}),
+  7xl: calc(7.8rem + #{$adjustSpace})
+);
+@function fz($key){
+  @return map-get($fontSizeSet, $key);
+}
+
+$mainWidth: 66.3em; //=1060px
+$bp: (
+  sp: 45em, //=720px
+  tab: 50em, //=800px
+  main: $mainWidth
+);
+
+$mainColor: #40806e;
+$colorSet: ( //カラー設定
+  white: #fff,
+  black: #4d4d4d,
+  main: $mainColor,
+  mainLight: scale-color($mainColor, $lightness: 90%),
+  mainHoverLight: scale-color($mainColor, $lightness: 25%),
+  mainDark: scale-color($mainColor, $lightness: -50%),
+  accent: #e40067,
+  grayLight: #f2f2f2,
+  yellow: #e5e400,
+  gold: #f2df91
+);
+@function color($key){
+  @return map-get($colorSet, $key);
+}
+
+//transition-duration
+$trs: .2s;
+
+//border-radius
+$brs: .8rem;
+
+//header
+$tabHeaderSize: calc((#{space(m)} * 2) + #{space(s)} + #{fz(l)} + #{fz(xs)});
+////↑headerの上下padding + p-header__nav-menu-list-textのmargin-top + p-header__nav-menu-list-labelのfont-size + p-header__nav-menu-list-textのfont-size
+$spHeaderSize: calc(#{space(m)} * 2 + 4rem);
+////↑headerの上限パディング + タイトルSVGの高さ

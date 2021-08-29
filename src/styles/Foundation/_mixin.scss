@@ -1,0 +1,98 @@
+@mixin flexSet($fw: wrap, $fd: null, $jc: null, $ac: null, $ai: null) { //flexbox設定
+  display: flex;
+  flex-wrap: $fw;
+  flex-direction: $fd;
+  justify-content: $jc;
+  align-content: $ac;
+  align-items: $ai;
+}
+
+@mixin mq($key) { //メディアクエリ
+  @media screen and (max-width: map-get($bp, $key)){
+    @content;
+  }
+}
+
+@mixin gridReset($mt: null) { //グリッドシステムをリセットする。_grid.scssで使用
+  max-width: 100%;
+  flex: 0 0 100%;
+  &:not(:first-child){
+    margin-top: $mt;
+  }
+}
+
+@mixin layoutBase($color: null, $width: main, $catName: null) { //レイアウト設定
+  position: relative;
+  margin: auto;
+  padding: space(7xl) space(3xl);
+  max-width: map-get($bp, $width);
+  color: $color;
+  @include mq(sp){
+    padding: space(4xl) space(m);
+  }
+}
+
+@mixin titleBase($color: null, $lineColor: color(mainLight)) { //見出し設定
+  color: $color;
+  font-size: fz(5xl);
+  line-height: 1;
+  letter-spacing: .04em;
+  font-weight: bold;
+  &-sub {
+    position: relative;
+    margin-top: space(s);
+    padding-left: 2em;
+    color: color(black);
+    font-size: fz(l);
+    line-height: 1;
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: calc(2em - #{space(s)});
+      height: .4em;
+      background-color: $lineColor;
+      transform: translateY(-50%);
+      content: '';
+    }
+  }
+  @include mq(sp){
+    font-size: fz(2xl);
+    &-sub {
+      font-size: fz(m);
+    }
+  }
+}
+
+@mixin underLineBefore($lineColor: color(black)) { //リンク用のアンダーライン
+  background-position: 0 100%;
+  background-size: 100% .1rem;
+  background-repeat: no-repeat;
+  background-image: linear-gradient($lineColor, $lineColor);
+  transition: opacity $trs;
+}
+@mixin underLineAfter($hover: true) { //リンク用のアンダーライン・ホバー時
+  @if ($hover == true){
+    &:hover {
+      animation: underLineAnim ($trs * 1.5);
+    }
+  } @else {
+    animation: underLineAnim ($trs * 1.5);
+  }
+}
+@keyframes underLineAnim { //リンク用アンダーラインのアニメーション
+  0% {
+    background-position: 100% 100%;
+  }
+  45% {
+    background-position: 100% 100%;
+    background-size: 0 .1rem;
+  }
+  55% {
+    background-position: 0 100%;
+    background-size: 0 .1rem;
+  }
+  100% {
+    background-size: 100% .1rem;
+  }
+}
