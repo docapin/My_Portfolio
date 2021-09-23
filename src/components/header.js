@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TitleName from './title_name'
-import pageScroll from './scrollEvent'
-import MyLinkSet from './myLinkSet'
+import pageScroll from './scroll_event'
+import MyLinkSet from './my_link_set'
 
 export default function Header({ indexJudge }) {
   const [judgeClick, setClass] = useState(false)

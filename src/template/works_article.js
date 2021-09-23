@@ -2,7 +2,7 @@ import React from 'react'
 import Head from '../components/head'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import MyLinkSet from '../components/myLinkSet'
+import MyLinkSet from '../components/my_link_set'
 import { graphql } from 'gatsby'
 import SwiperCore, { Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -67,7 +67,7 @@ export default function WorksPost({ data, pageContext }) {
             <div className="p-works-art__cat-title-sub">制作実績</div>
             
             <div className="p-works-art__main">
-              <h3 className="p-works-art__main-title" dangerouslySetInnerHTML={textHtml(post.title, true)}/>
+              <h3 className="p-works-art__main-title" dangerouslySetInnerHTML={ textHtml(post.title, true) }/>
               <Swiper
                 slidesPerView={'auto'}
                 loop={slideImage.length > 1 ? true : false}
@@ -110,8 +110,8 @@ export default function WorksPost({ data, pageContext }) {
               </dl>
             </div>
             <div className="c-row p-works-art__pagination">
-              <PaginationTag value={paginationData(pageContext.previous, 0)} text={paginationData(pageContext.previous, 1)}/>
-              <PaginationTag value={paginationData(pageContext.next, 0)} text={paginationData(pageContext.next, 1)}/>
+              <PaginationTag value={ paginationData(pageContext.previous, 0) } text={ paginationData(pageContext.previous, 1) }/>
+              <PaginationTag value={ paginationData(pageContext.next, 0) } text={ paginationData(pageContext.next, 1) }/>
               <div className="c-column__12 p-works-art__pagination-link-back">
                 <MyLinkSet value="Worksに戻る" to="/#works"/>
               </div>

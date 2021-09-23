@@ -1,6 +1,6 @@
 import React from 'react'
 import TitleName from './title_name'
-import pageScroll from './scrollEvent'
+import pageScroll from './scroll_event'
 import { useStaticQuery, graphql } from 'gatsby'
 
 export default function MainVisual() {

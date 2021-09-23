@@ -11,8 +11,8 @@
 @import "Object/Component/_title";
 @import "Object/Component/_underline";
 /**** Plugin *****/
-@import "Object/Plugin/swiper-vars";
-@import "Object/Plugin/swiper";
+@import "Object/Plugin/_swiper-vars";
+@import "Object/Plugin/_swiper";
 /**** Project ****/
 @import "Object/Project/_header";
 @import "Object/Project/_mv";
@@ -21,7 +21,7 @@
 @import "Object/Project/_works_article";
 @import "Object/Project/_footer";
 @import "Object/Project/_404";
-@import "Object/Project/external_link";
+@import "Object/Project/_external_link";
 /**** Utility ****/
 @import "Object/Utility/_spacing";
 @import "Object/Utility/_typography";
